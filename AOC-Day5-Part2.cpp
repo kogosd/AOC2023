@@ -23,27 +23,6 @@ auto cmp = [] (const Mapping& m1, const Mapping& m2)  {
 using myset=set<Mapping, decltype(cmp)>;
 myset S2S, S2F, F2W, W2L, L2T, T2H, H2L;
 
-ostream& operator<<(ostream& o, const vector<u64>& v) {
-    for(auto elm :v ) {
-        o << elm << " ";
-    }
-    return o;
-}
-
-ostream& operator<<(ostream& o, const vector<SEGMENT>& v) {
-    for(auto elm :v ) {
-        o << "[" << elm.first << "," << elm.second << ") ";
-    }
-    return o;
-}
-
-ostream& operator<<(ostream& o, const myset& m) {
-    for(auto elm :m ) {
-        o << "[" << elm.source_low << "," << elm.source_high << ")=>" <<  elm.target_low << "  ";
-    }
-    return o;
-}
-
 void process_map(ifstream& ifs, myset& M) {
     string line;
     while (getline(ifs, line)) {
