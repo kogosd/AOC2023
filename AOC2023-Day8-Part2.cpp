@@ -1,3 +1,9 @@
+/*
+real    0m0.830s
+user    0m0.827s
+sys     0m0.003s
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
