@@ -38,8 +38,7 @@ ostream &operator<<(ostream &o, const FIELD &v)
         {
             auto elm = row[j];
             string str;
-            switch (elm)
-            {
+            switch (elm) {
             case 'F':
                 str.assign("\u250c");
                 break;
@@ -71,20 +70,15 @@ ostream &operator<<(ostream &o, const FIELD &v)
 
 bool valid(int xx, int yy)
 {
-    if (xx < 0)
-        return false;
-    if (xx >= rowcount)
-        return false;
-    if (yy < 0)
-        return false;
-    if (yy >= colcount)
-        return false;
+    if (xx < 0)         return false;
+    if (xx >= rowcount) return false;
+    if (yy < 0)         return false;
+    if (yy >= colcount) return false;
     return true;
 }
 
 bool connected(int xx, int yy, int x, int y)
 {
-    // check if connected
     auto us = field[x][y];
     auto f = field[xx][yy];
 
@@ -173,18 +167,12 @@ bool find_path(set<POINT> &path, int x, int y, int start_val, int vmax, bool for
         next_val = vmax - 1;
         forward = false;
     }
-    else
-    {
-        next_val = forward ? ++start_val : --start_val;
-    }
-    if (next_val == 0 and forward == false)
-        return true;
+    else   { next_val = forward ? ++start_val : --start_val; }
+    if (next_val == 0 and forward == false)     return true;
     vector<POINT> neighbors = std::move(get_neighbors(x, y, next_val));
     for (auto [xx, yy] : neighbors)
     {
-        if (find(path.begin(), path.end(), make_pair(xx, yy)) != path.end())
-            continue;
-
+        if (find(path.begin(), path.end(), make_pair(xx, yy)) != path.end())       continue;
         path.insert({xx, yy});
         bool b = find_path(path, xx, yy, next_val, vmax, forward, indent + 1);
         if (b == false)  { path.erase({xx, yy}); }
@@ -200,6 +188,7 @@ int main(int argc, char **argv)
     ifstream ifs(filename);
     string tmp;
     int x, y;
+
     int startx, starty;
     while (ifs >> tmp)
     {
